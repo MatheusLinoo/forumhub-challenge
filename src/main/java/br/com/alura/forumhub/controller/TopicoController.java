@@ -23,7 +23,7 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/topicos")
+@RequestMapping("topicos")
 @SecurityRequirement(name = "bearer-key")
 public class TopicoController {
 

@@ -12,7 +12,7 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("usuarios")
 @SecurityRequirement(name = "bearer-key")
 public class UsuarioController {
 

@@ -11,7 +11,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cursos")
+@RequestMapping("cursos")
 @SecurityRequirement(name = "bearer-key")
 public class CursoController {
     
