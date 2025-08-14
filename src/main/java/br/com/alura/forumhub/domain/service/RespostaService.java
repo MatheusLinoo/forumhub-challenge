@@ -11,6 +11,9 @@ import br.com.alura.forumhub.domain.model.Usuario;
 import br.com.alura.forumhub.domain.repository.RespostaRepository;
 import br.com.alura.forumhub.domain.repository.TopicoRepository;
 import br.com.alura.forumhub.domain.repository.UsuarioRepository;
+import br.com.alura.forumhub.dto.requests.RespostaRequestDTO;
+import br.com.alura.forumhub.dto.responses.RespostaResponseDTO;
+import br.com.alura.forumhub.dto.responses.UsuarioResponseDTO;
 
 @Service
 public class RespostaService {

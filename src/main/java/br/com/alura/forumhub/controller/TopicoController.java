@@ -1,29 +1,29 @@
 package br.com.alura.forumhub.controller;
 
-import java.net.URI;
-import java.util.List;
-
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
+import br.com.alura.forumhub.domain.model.Topico;
+import br.com.alura.forumhub.domain.service.RespostaService;
+import br.com.alura.forumhub.domain.service.TopicoService;
+import br.com.alura.forumhub.dto.requests.AtualizaRequestStatusDTO;
+import br.com.alura.forumhub.dto.requests.RespostaRequestDTO;
+import br.com.alura.forumhub.dto.requests.TopicoRequestDTO;
+import br.com.alura.forumhub.dto.responses.RespostaResponseDTO;
+import br.com.alura.forumhub.dto.responses.TopicoResponseDTO;
+
+import java.net.URI;
+import java.util.List;
 
 @RestController
-@RequestMapping("topicos")
+@RequestMapping("/topicos")
 @SecurityRequirement(name = "bearer-key")
 public class TopicoController {
 
@@ -46,11 +46,11 @@ public class TopicoController {
     }
 
     @GetMapping("/buscar")
-    public ResponseEntity<Page<TopicoResponseDTO>> buscarPorCursoEStatus(
+    public ResponseEntity<Page<TopicoResponseDTO>> buscarPorCursoEAno(
             @PageableDefault(size = 10) Pageable pageable,
             @RequestParam String curso,
-            @RequestParam Status ano) {
-        Page<TopicoResponseDTO> page = topicoService.buscarPorCursoEStatus(curso, ano, pageable);
+            @RequestParam int ano) {
+        Page<TopicoResponseDTO> page = topicoService.buscarPorCursoEAno(curso, ano, pageable);
         return ResponseEntity.ok(page);
     }
 
@@ -87,13 +87,13 @@ public class TopicoController {
         return ResponseEntity.ok(new TopicoResponseDTO(topico));
     }
 
-    @PutMapping("status/{id}")
+    @PutMapping("{id}/status")
     @Transactional
-    public ResponseEntity<TopicoResponseDTO> atualizarStatus(@RequestBody AtualizarRequestStatusDTO dados, @PathVariable Long id) {
+    public ResponseEntity<TopicoResponseDTO> atualizarStatus(@RequestBody AtualizaRequestStatusDTO dados, @PathVariable Long id) {
         Topico topico = topicoService.atualizarStatus(id, dados);
         return ResponseEntity.ok(new TopicoResponseDTO(topico));
     }
-    
+
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity excluir(@PathVariable Long id) {

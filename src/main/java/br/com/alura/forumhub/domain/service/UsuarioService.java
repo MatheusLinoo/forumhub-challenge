@@ -10,6 +10,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.com.alura.forumhub.domain.model.Usuario;
 import br.com.alura.forumhub.domain.repository.UsuarioRepository;
+import br.com.alura.forumhub.dto.requests.UsuarioRequestDTO;
+import br.com.alura.forumhub.dto.responses.UsuarioResponseDTO;
 
 @Service
 public class UsuarioService {

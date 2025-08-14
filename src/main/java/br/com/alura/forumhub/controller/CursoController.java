@@ -7,6 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import br.com.alura.forumhub.domain.model.Curso;
+import br.com.alura.forumhub.domain.service.CursoService;
+import br.com.alura.forumhub.dto.requests.CursoRequestDTO;
+import br.com.alura.forumhub.dto.responses.CursoResponseDTO;
+
 import java.net.URI;
 import java.util.List;
 

@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import br.com.alura.forumhub.domain.model.Topico;
+import br.com.alura.forumhub.dto.responses.TopicoResponseDTO;
 
 public interface TopicoRepository extends JpaRepository<Topico, Long> {
 

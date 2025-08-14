@@ -9,6 +9,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.com.alura.forumhub.domain.model.Curso;
 import br.com.alura.forumhub.domain.repository.CursoRepository;
+import br.com.alura.forumhub.dto.requests.CursoRequestDTO;
+import br.com.alura.forumhub.dto.responses.CursoResponseDTO;
 
 @Service
 public class CursoService {

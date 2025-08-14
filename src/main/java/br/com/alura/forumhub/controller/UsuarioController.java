@@ -7,6 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import br.com.alura.forumhub.domain.model.Usuario;
+import br.com.alura.forumhub.domain.service.UsuarioService;
+import br.com.alura.forumhub.dto.requests.UsuarioRequestDTO;
+import br.com.alura.forumhub.dto.responses.UsuarioResponseDTO;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;

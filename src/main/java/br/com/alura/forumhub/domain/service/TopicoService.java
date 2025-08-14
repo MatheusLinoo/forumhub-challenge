@@ -1,9 +1,5 @@
 package br.com.alura.forumhub.domain.service;
 
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +14,16 @@ import br.com.alura.forumhub.domain.model.Usuario;
 import br.com.alura.forumhub.domain.repository.CursoRepository;
 import br.com.alura.forumhub.domain.repository.TopicoRepository;
 import br.com.alura.forumhub.domain.repository.UsuarioRepository;
+import br.com.alura.forumhub.dto.requests.AtualizaRequestStatusDTO;
+import br.com.alura.forumhub.dto.requests.TopicoRequestDTO;
+import br.com.alura.forumhub.dto.responses.CursoResponseDTO;
+import br.com.alura.forumhub.dto.responses.RespostaResponseDTO;
+import br.com.alura.forumhub.dto.responses.TopicoResponseDTO;
+import br.com.alura.forumhub.dto.responses.UsuarioResponseDTO;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TopicoService {
@@ -69,7 +75,7 @@ public class TopicoService {
     }
 
     public List<TopicoResponseDTO> listarTop10OrderByDataIncAsc() {
-        return topicoRepository.findTop10ByOrderByDataIncAsc();
+        return topicoRepository.findTop10ByOrderByDateAsc();
     }
 
     public TopicoResponseDTO listarId(Long id) {
@@ -132,7 +138,7 @@ public class TopicoService {
                 );
     }
 
-    public Topico atualizarStatus(Long id, AtualizarRequestStatusDTO dados) {
+    public Topico atualizarStatus(Long id, AtualizaRequestStatusDTO dados) {
         Topico topico = buscarTopico(id);
         topico.atualizarStatus(dados);
 

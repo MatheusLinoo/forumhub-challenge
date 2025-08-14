@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.alura.forumhub.dto.requests.AtualizaRequestStatusDTO;
+import br.com.alura.forumhub.dto.requests.TopicoRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -56,7 +58,7 @@ public class Topico {
         }
     }
 
-    public void atualizarStatus(AtualizarRequestStatusDTO dados) {
+    public void atualizarStatus(AtualizaRequestStatusDTO dados) {
         if (dados.status() != null) {
             this.status = dados.status();
         }
