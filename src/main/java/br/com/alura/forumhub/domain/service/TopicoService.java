@@ -75,7 +75,7 @@ public class TopicoService {
     }
 
     public List<TopicoResponseDTO> listarTop10OrderByDataIncAsc() {
-        return topicoRepository.findTop10ByOrderByDateAsc();
+        return topicoRepository.findTop10ByOrderByDataIncAsc();
     }
 
     public TopicoResponseDTO listarId(Long id) {

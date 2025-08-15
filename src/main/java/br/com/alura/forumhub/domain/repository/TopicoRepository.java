@@ -13,7 +13,7 @@ import br.com.alura.forumhub.dto.responses.TopicoResponseDTO;
 
 public interface TopicoRepository extends JpaRepository<Topico, Long> {
 
-    List<TopicoResponseDTO> findTop10ByOrderByDateAsc();
+    List<TopicoResponseDTO> findTop10ByOrderByDataIncAsc();
 
     @Query("""
             SELECT t
