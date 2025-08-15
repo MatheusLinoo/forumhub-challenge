@@ -101,19 +101,4 @@ public class TopicoController {
 
         return ResponseEntity.noContent().build();
     }
-
-    @PostMapping("/{id}/respostas")
-    public ResponseEntity<RespostaResponseDTO> responderTopico(@PathVariable Long id, @RequestBody @Valid RespostaRequestDTO dados) {
-        RespostaRequestDTO dadosComTopico = new RespostaRequestDTO(
-                null,
-                dados.mensagem(),
-                id,
-                dados.autorId()
-        );
-
-        RespostaResponseDTO respostaDTO = respostaService.cadastrar(dadosComTopico);
-
-        URI uri = URI.create("/topicos/" + id + "/respostas/" + respostaDTO.id());
-        return ResponseEntity.created(uri).body(respostaDTO);
-    }
 }

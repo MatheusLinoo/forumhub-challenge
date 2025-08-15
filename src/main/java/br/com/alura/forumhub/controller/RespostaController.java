@@ -40,4 +40,17 @@ public class RespostaController {
     public List<RespostaResponseDTO> listar() {
         return respostaService.listar();
     }
+
+    @PostMapping("/{topicoId}")
+    public ResponseEntity<RespostaResponseDTO> responderTopico(@PathVariable Long topicoId,
+            @RequestBody @Valid RespostaRequestDTO dados) {
+        RespostaRequestDTO dadosComTopico = new RespostaRequestDTO(
+                null,
+                dados.mensagem(),
+                topicoId,
+                dados.autorId());
+        RespostaResponseDTO respostaDTO = respostaService.cadastrar(dadosComTopico);
+        URI uri = URI.create("/respostas/" + respostaDTO.id());
+        return ResponseEntity.created(uri).body(respostaDTO);
+    }
 }

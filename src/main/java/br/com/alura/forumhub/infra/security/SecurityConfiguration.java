@@ -36,17 +36,18 @@ public class SecurityConfiguration {
                         sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login").permitAll()
-                        .requestMatchers("swagger-ui.html", "swagger-ui/**","v3/api-docs/**").permitAll()
+                        .requestMatchers("swagger-ui.html", "swagger-ui/**", "v3/api-docs/**").permitAll()
 
-                        .requestMatchers(HttpMethod.GET, "/topicos", "/topicos/*", "/cursos", "/usuarios", "/respostas").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/topicos", "/topicos/*/respostas", "/respostas").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/topicos", "/topicos/*", "/cursos", "/usuarios", "/respostas")
+                        .hasAnyRole("USER", "ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/topicos", "/respostas/{topicoId}")
+                        .hasAnyRole("USER", "ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/topicos/*").hasAnyRole("USER", "ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/topicos/*").hasRole("ADMIN")
 
                         // ADMIN pode tudo
                         .requestMatchers("/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
-
 
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
@@ -56,7 +57,7 @@ public class SecurityConfiguration {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://127.0.0.1:5500","http://localhost:5500"));
+        config.setAllowedOrigins(List.of("http://127.0.0.1:5500", "http://localhost:5500"));
         config.addAllowedMethod("*");
         config.addAllowedHeader("*");
 
