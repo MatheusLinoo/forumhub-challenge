@@ -20,7 +20,7 @@ public interface TopicoRepository extends JpaRepository<Topico, Long> {
             FROM Topico t
             WHERE t.curso.nome = :curso
             AND
-            FUNCTION('YEAR', t.date) = :ano
+            FUNCTION('YEAR', t.dataInc) = :ano
             """)
         Page<Topico> buscarPorCursoEAno(@Param("curso") String curso, @Param("ano") int ano, Pageable pageable);
 

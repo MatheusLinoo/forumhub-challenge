@@ -18,7 +18,7 @@ import br.com.alura.forumhub.dto.responses.LoginResponseDTO;
 import br.com.alura.forumhub.dto.responses.UsuarioResponseDTO;
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping("login")
 public class AutenticacaoController {
 
     @Autowired

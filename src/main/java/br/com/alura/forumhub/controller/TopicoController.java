@@ -23,7 +23,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/topicos")
+@RequestMapping("topicos")
 @SecurityRequirement(name = "bearer-key")
 public class TopicoController {
 
